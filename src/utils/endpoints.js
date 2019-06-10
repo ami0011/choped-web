@@ -1,0 +1,4 @@
+export const signin = 'https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=AIzaSyBTOuxU89sP1NQw3OxfySFWSh1VJrHAkF4'
+export const resetPassword = 'https://www.googleapis.com/identitytoolkit/v3/relyingparty/getOobConfirmationCode?key=AIzaSyBTOuxU89sP1NQw3OxfySFWSh1VJrHAkF4'
+export const verifyOobCode = 'https://www.googleapis.com/identitytoolkit/v3/relyingparty/resetPassword?key=AIzaSyBTOuxU89sP1NQw3OxfySFWSh1VJrHAkF4'
+export const confirmResetPassword = 'https://www.googleapis.com/identitytoolkit/v3/relyingparty/resetPassword?key=AIzaSyBTOuxU89sP1NQw3OxfySFWSh1VJrHAkF4'

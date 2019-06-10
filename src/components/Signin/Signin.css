@@ -1,0 +1,27 @@
+.Signin {
+  display: flex;
+}
+
+.Signin_Form {
+  width: 450px;
+  height: fit-content;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 2px;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.Form_Header{
+    font-weight: bold;
+    line-height: 26px;
+    border-bottom: 2px solid #eee;
+    color: #888;
+    padding: 8px 0;
+    margin: 0 0 10px 0;
+}
+
+.resetLink{
+  color: rgb(26, 112, 241);
+  cursor: pointer;
+}
