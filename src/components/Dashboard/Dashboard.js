@@ -5,8 +5,6 @@ import SideTab from "../SideTab/SideTab";
 import UserProfile from "./UserProfile/UserProfile";
 import Conversations from "./Conversations/Conversations";
 import Groups from "./Groups/Groups";
-import { Modal } from 'antd';
-import { Input } from 'antd';
 
 const { Content, Sider } = Layout;
 

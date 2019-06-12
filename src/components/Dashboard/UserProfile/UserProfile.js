@@ -2,10 +2,16 @@ import React, { Component } from "react";
 import axios from "../../../axiosInstance";
 import Table from "../../UI/Table/Table";
 import { connect } from "react-redux";
+import CustomCard from "../../UI/Card/Card";
+import { Skeleton, Card, Switch, Avatar } from 'antd';
+
+
+const { Meta } = Card;
 
 class UserProfile extends Component {
   state = {
-    profile: []
+      profile: [],
+      loading: true
   };
 
   componentWillMount() {
@@ -26,54 +32,44 @@ class UserProfile extends Component {
       .catch(error => {
         console.log(error);
       });
+
+    if(this.state.profile.length > 0){
+        this.setState({ loading: false });
+    }
   }
 
+    renderCard = profile => {
+        const { loading } = this.state;
+      const { firstName, lastName, accountName, email, dateOfBirth, address, country, postCode} = profile;
+      return(
+          <div style={{ textAlign: 'left' }}>
+              <Skeleton loading={!loading} avatar active>
+                  <Meta
+                      avatar={
+                          <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+                      }
+                      title={firstName + ' ' + lastName}
+                  />
+              <p>Account Name: <text>{accountName}</text></p>
+              <p>Email: <text>{email}</text></p>
+              <p>Date Of Birth: <text>{dateOfBirth}</text></p>
+              <p>Address: <text>{address}</text></p>
+              <p>Country: <text>{country}</text></p>
+              <p>Post Code: <text>{postCode}</text></p>
+              </Skeleton>
+          </div>
+      )
+    }
+
   render() {
-    const columns = [
-      {
-        title: "First Name",
-        dataIndex: "firstName",
-        key: "firstName"
-      },
-      {
-        title: "Last Name",
-        dataIndex: "lastName",
-        key: "lastName"
-      },
-      {
-        title: "Account Name",
-        dataIndex: "accountName",
-        key: "accountName"
-      },
-      {
-        title: "Email",
-        dataIndex: "email",
-        key: "email"
-      },
-      {
-        title: "Date Of Birth",
-        dataIndex: "dateOfBirth",
-        key: "dateOfBirth"
-      },
-      {
-        title: "Address",
-        dataIndex: "address",
-        key: "address"
-      },
-      {
-        title: "Country",
-        dataIndex: "country",
-        key: "country"
-      },
-      {
-        title: "Post Code",
-        dataIndex: "postCode",
-        key: "postCode"
-      }
-    ];
+      console.log('profile', this.state.profile);
     return (
       <div>
-        <Table columns={columns} dataSource={this.state.profile} />
+          {this.state.profile.map(profile => (
+              <CustomCard
+                  title="User Profile"
+                  children={this.renderCard(profile)}/>
+          ))}
       </div>
     );
   }
