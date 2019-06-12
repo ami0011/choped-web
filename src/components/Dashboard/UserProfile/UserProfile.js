@@ -27,15 +27,11 @@ class UserProfile extends Component {
             response.data.dateOfBirth
           ).getMonth()}-${new Date(response.data.dateOfBirth).getDate()}`
         }];
-        this.setState({ profile });
+        this.setState({ loading: false, profile });
       })
       .catch(error => {
         console.log(error);
       });
-
-    if(this.state.profile.length > 0){
-        this.setState({ loading: false });
-    }
   }
 
     renderCard = profile => {
@@ -43,7 +39,7 @@ class UserProfile extends Component {
       const { firstName, lastName, accountName, email, dateOfBirth, address, country, postCode} = profile;
       return(
           <div style={{ textAlign: 'left' }}>
-              <Skeleton loading={!loading} avatar active>
+              <Skeleton loading={loading} avatar active>
                   <Meta
                       avatar={
                           <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
@@ -62,13 +58,14 @@ class UserProfile extends Component {
     }
 
   render() {
-      console.log('profile', this.state.profile);
+      console.log('state', this.state);
     return (
       <div>
           {this.state.profile.map(profile => (
               <CustomCard
                   title="User Profile"
-                  children={this.renderCard(profile)}/>
+                  children={this.renderCard(profile)}
+              />
           ))}
       </div>
     );

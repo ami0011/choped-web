@@ -3,7 +3,7 @@ import { Card, Icon } from 'antd';
 
 export class CustomCard extends Component {
     render(){
-        const { title, children } = this.props;
+        const { title, children, loading } = this.props;
         return(
             <div>
             <Card
@@ -11,6 +11,7 @@ export class CustomCard extends Component {
                 bordered={false}
                 style={{ width: 400, margin: 'auto', marginTop: '30px' }}
                 actions={[<Icon type="setting" />, <Icon type="edit" />, <Icon type="ellipsis" />]}
+                loading={loading}
             >
                 {children}
             </Card>
