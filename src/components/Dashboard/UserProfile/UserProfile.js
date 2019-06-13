@@ -55,7 +55,7 @@ class UserProfile extends Component {
               </Skeleton>
           </div>
       )
-    }
+    };
 
   render() {
       console.log('state', this.state);
