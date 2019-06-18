@@ -45,9 +45,10 @@ class Groups extends Component {
       }
   };
 
-  joinGroup = id => {
+  joinGroup = id => () => {
+      const request = {body:{userId: id.toString()}};
       axios
-        .post(`/groups/add/${id}`)
+        .post("groups/joinGroup", request)
         .then(response => {
             console.log('join group:', response);
             if(response){
@@ -57,9 +58,10 @@ class Groups extends Component {
         .catch(error => { console.log(error) })
   };
 
-  deleteGroup = id => {
+  deleteGroup = id => () => {
+      const request = {body:{userId: id}};
       axios
-          .post(`/groups/delete/${id}`)
+          .post("groups/leaveGroup", request)
           .then(response => {
               console.log('delete group:', response);
               if(response){
@@ -69,9 +71,11 @@ class Groups extends Component {
           .catch(error => { console.log(error) })
   };
 
-  editGroup = id => {
+  editGroup = obj => () => {
+      const { name, description, firebaseId } = obj[0];
+      const request = {body: { name: name, description: description, id: firebaseId }};
       axios
-          .post(`/groups/edit/${id}`)
+          .post("groups/fetchAndUpdate", request)
           .then(response => {
               console.log('edit group:', response);
               if(response){
@@ -82,7 +86,6 @@ class Groups extends Component {
   };
 
   render() {
-      console.log('groups', this.state.groups);
     const columns = [
       {
         title: "Name",
@@ -131,7 +134,7 @@ class Groups extends Component {
           <CustomModal
               title="Edit Group"
               visible={this.state.showEditGroupModal}
-              handleSubmit={this.editGroup(this.state.groups.map(id => id.firebaseId))}
+              handleSubmit={this.editGroup(this.state.groups.map(obj => obj))}
               handleCancel={() => {this.setState({ showEditGroupModal: false })}}
               children={
                   <span>
