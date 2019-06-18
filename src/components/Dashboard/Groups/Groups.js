@@ -59,7 +59,7 @@ class Groups extends Component {
   };
 
   deleteGroup = id => () => {
-      const request = {body:{userId: id}};
+      const request = {body:{userId: id.toString()}};
       axios
           .post("groups/leaveGroup", request)
           .then(response => {
