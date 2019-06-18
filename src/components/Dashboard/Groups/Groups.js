@@ -3,14 +3,15 @@ import axios from "../../../axiosInstance";
 import Table from "../../UI/Table/Table";
 import { connect } from "react-redux";
 import CustomModal from "../../UI/Modal/Modal";
-import { Divider } from 'antd';
+import {Divider, Input} from 'antd';
 
 
 class Groups extends Component {
   state = {
     groups: [],
       showGroupJoinModal: false,
-      showDeleteGroupModal: false
+      showDeleteGroupModal: false,
+      showEditGroupModal: false
   };
 
   componentWillMount() {
@@ -34,7 +35,54 @@ class Groups extends Component {
       });
   }
 
+  clickHandleForModal = type => () => {
+      if(type === 'join'){
+          this.setState({ showGroupJoinModal: true })
+      } else if(type === 'edit'){
+          this.setState({ showEditGroupModal: true })
+      } else if(type === 'delete'){
+          this.setState({ showDeleteGroupModal: true })
+      }
+  };
+
+  joinGroup = id => {
+      axios
+        .post(`/groups/add/${id}`)
+        .then(response => {
+            console.log('join group:', response);
+            if(response){
+                this.setState({ showGroupJoinModal: false })
+            }
+        })
+        .catch(error => { console.log(error) })
+  };
+
+  deleteGroup = id => {
+      axios
+          .post(`/groups/delete/${id}`)
+          .then(response => {
+              console.log('delete group:', response);
+              if(response){
+                  this.setState({ showDeleteGroupModal: false })
+              }
+          })
+          .catch(error => { console.log(error) })
+  };
+
+  editGroup = id => {
+      axios
+          .post(`/groups/edit/${id}`)
+          .then(response => {
+              console.log('edit group:', response);
+              if(response){
+                  this.setState({ showEditGroupModal: false })
+              }
+          })
+          .catch(error => { console.log(error) })
+  };
+
   render() {
+      console.log('groups', this.state.groups);
     const columns = [
       {
         title: "Name",
@@ -61,30 +109,49 @@ class Groups extends Component {
             dataIndex: "action",
             key: "action",
             render: text => <span>
-                    <a href="javascript:;" onClick={() => {this.setState({ showGroupJoinModal: true })}}>Join</a>
+                    <a href="javascript:;" onClick={this.clickHandleForModal('join')}>Join</a>
                     <Divider type="vertical" />
-                    <a href="javascript:;">Edit</a>
+                    <a href="javascript:;" onClick={this.clickHandleForModal('edit')}>Edit</a>
                 <Divider type="vertical" />
-                <a href="javascript:;" onClick={() => {this.setState({ showDeleteGroupModal: true })}}>Delete</a>
+                <a href="javascript:;" onClick={this.clickHandleForModal('delete')}>Delete</a>
                 </span>
         }
     ];
+
     return (
       <div>
         <Table columns={columns} dataSource={this.state.groups}/>
           <CustomModal
               title="Join Group"
               visible={this.state.showGroupJoinModal}
-              handleSubmit={() => {this.setState({ showGroupJoinModal: false })}}
+              handleSubmit={this.joinGroup(this.state.groups.map(id => id.firebaseId))}
               handleCancel={() => {this.setState({ showGroupJoinModal: false })}}
-              children={<p>Join group: 'food8'</p>}
+              children={<p>Do you want to join group {this.state.groups.map(name => name.name)}?</p>}
           />
           <CustomModal
-              title="Delete Conversation"
+              title="Edit Group"
+              visible={this.state.showEditGroupModal}
+              handleSubmit={this.editGroup(this.state.groups.map(id => id.firebaseId))}
+              handleCancel={() => {this.setState({ showEditGroupModal: false })}}
+              children={
+                  <span>
+                      <p>Name</p>
+                      <Input placeholder="Group Name"
+                             allowClear
+                             onChange={this.onTextChange}
+                             defaultValue={this.state.groups.map(name => name.name)}/>
+                  <p style={{ marginTop: '10px' }}>Description</p>
+                  <Input placeholder="Group Description"
+                         allowClear onChange={this.onTextChange}
+                         defaultValue={this.state.groups.map(desc => desc.description)}/>
+                  </span>}
+          />
+          <CustomModal
+              title="Delete Group"
               visible={this.state.showDeleteGroupModal}
-              handleSubmit={() => {this.setState({ showDeleteGroupModal: false })}}
+              handleSubmit={this.deleteGroup(this.state.groups.map(id => id.firebaseId))}
               handleCancel={() => {this.setState({ showDeleteGroupModal: false })}}
-              children={<p>Are you sure you want to delete this group?</p>}
+              children={<p>Are you sure you want to delete this {this.state.groups.map(name => name.name)}?</p>}
           />
       </div>
     );

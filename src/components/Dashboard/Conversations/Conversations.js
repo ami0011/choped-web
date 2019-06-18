@@ -57,42 +57,10 @@ class Conversations extends Component {
         dataIndex: "intent",
         key: "intent",
       },
-        {
-            title: "Action",
-            dataIndex: "action",
-            key: "action",
-            render: text =>
-                <span>
-                    <a href="javascript:;" onClick={() => this.setState({ showJoinConvoModal: true })}>Join</a>
-                    <Divider type="vertical" />
-                    <a href="javascript:;" onClick={() => this.setState({ showDeleteConvoModal: true })}>Delete</a>
-                </span>
-        }
     ];
     return (
       <div>
         <Table columns={columns} dataSource={this.state.conversations} />
-          <CustomModal
-              title="Join Conversation"
-              visible={this.state.showJoinConvoModal}
-              handleSubmit={() => {this.setState({ showJoinConvoModal: false })}}
-              handleCancel={() => {this.setState({ showJoinConvoModal: false })}}
-              children={
-                  <span>
-                      <p>Name</p>
-                  <Input placeholder="Group Name" allowClear onChange={this.onTextChange} />
-                  <p style={{ marginTop: '10px' }}>Description</p>
-                  <Input placeholder="Group Description" allowClear onChange={this.onTextChange} />
-                  </span>
-              }
-          />
-          <CustomModal
-              title="Delete Conversation"
-              visible={this.state.showDeleteConvoModal}
-              handleSubmit={() => {this.setState({ showDeleteConvoModal: false })}}
-              handleCancel={() => {this.setState({ showDeleteConvoModal: false })}}
-              children={<p>Are you sure you want to delete this conversation?</p>}
-          />
       </div>
     );
   }
