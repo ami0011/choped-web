@@ -11,7 +11,9 @@ class Groups extends Component {
     groups: [],
       showGroupJoinModal: false,
       showDeleteGroupModal: false,
-      showEditGroupModal: false
+      showEditGroupModal: false,
+      groupName: '',
+      groupDesc: ''
   };
 
   componentWillMount() {
@@ -28,14 +30,14 @@ class Groups extends Component {
             key: group.firebaseId
           };
         });
-        this.setState({ groups });
+        this.setState({ groups, groupName: groups[0].name, groupDesc: groups[0].description });
       })
       .catch(error => {
         console.log(error);
       });
   }
 
-  clickHandleForModal = type => () => {
+  clickHandleForModal = (type, obj) => () => {
       if(type === 'join'){
           this.setState({ showGroupJoinModal: true })
       } else if(type === 'edit'){
@@ -72,18 +74,27 @@ class Groups extends Component {
   };
 
   editGroup = obj => () => {
-      const { name, description, firebaseId } = obj[0];
-      const request = {body: { name: name, description: description, id: firebaseId }};
+      const { firebaseId } = obj[0];
+      const request = {body: { name: this.state.groupName, description: this.state.groupDesc, id: firebaseId }};
       axios
           .post("groups/fetchAndUpdate", request)
           .then(response => {
-              console.log('edit group:', response);
+              console.log(response)
               if(response){
                   this.setState({ showEditGroupModal: false })
               }
           })
           .catch(error => { console.log(error) })
   };
+
+    onTextChange = event => {
+        const { value, id } = event.target;
+        if(id === 'description'){
+            this.setState({ groupDesc: value })
+        } else if(id === 'name'){
+            this.setState({ groupName: value })
+        }
+    };
 
   render() {
     const columns = [
@@ -116,7 +127,7 @@ class Groups extends Component {
                     <Divider type="vertical" />
                     <a href="javascript:;" onClick={this.clickHandleForModal('edit')}>Edit</a>
                 <Divider type="vertical" />
-                <a href="javascript:;" onClick={this.clickHandleForModal('delete')}>Delete</a>
+                <a href="javascript:;" onClick={this.clickHandleForModal('delete')}>Leave</a>
                 </span>
         }
     ];
@@ -127,7 +138,7 @@ class Groups extends Component {
           <CustomModal
               title="Join Group"
               visible={this.state.showGroupJoinModal}
-              handleSubmit={this.joinGroup(this.state.groups.map(id => id.firebaseId))}
+              handleSubmit={this.joinGroup(this.state.groups.map(id => id._id))}
               handleCancel={() => {this.setState({ showGroupJoinModal: false })}}
               children={<p>Do you want to join group {this.state.groups.map(name => name.name)}?</p>}
           />
@@ -140,13 +151,18 @@ class Groups extends Component {
                   <span>
                       <p>Name</p>
                       <Input placeholder="Group Name"
+                             id="name"
                              allowClear
                              onChange={this.onTextChange}
-                             defaultValue={this.state.groups.map(name => name.name)}/>
+                             value={this.state.groupName}
+                      />
                   <p style={{ marginTop: '10px' }}>Description</p>
                   <Input placeholder="Group Description"
-                         allowClear onChange={this.onTextChange}
-                         defaultValue={this.state.groups.map(desc => desc.description)}/>
+                         id="description"
+                         allowClear
+                         onChange={this.onTextChange}
+                         value={this.state.groupDesc}
+                  />
                   </span>}
           />
           <CustomModal
