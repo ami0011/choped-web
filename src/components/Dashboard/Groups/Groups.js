@@ -48,7 +48,7 @@ class Groups extends Component {
   joinGroup = id => () => {
       const request = {body:{userId: id.toString()}};
       axios
-        .post("groups/joinGroup", request)
+        .post("/groups/joinGroup", request)
         .then(response => {
             console.log('join group:', response);
             if(response){
