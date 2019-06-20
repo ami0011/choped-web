@@ -47,7 +47,8 @@ class Groups extends Component {
   };
 
   joinGroup = () => {
-      const request = {body:{userId: this.props.userId}};
+      const { selectedRecord } = this.state;
+      const request = {body:{userId: this.props.userId, firebaseId: selectedRecord.firebaseId}};
       axios
         .post("/groups/joinGroup", request)
         .then(response => {
@@ -61,7 +62,8 @@ class Groups extends Component {
   };
 
   deleteGroup = () => {
-      const request = {body:{userId: this.props.userId}};
+      const { selectedRecord } = this.state;
+      const request = {body:{userId: this.props.userId, firebaseId: selectedRecord.firebaseId}};
       axios
           .post("groups/leaveGroup", request)
           .then(response => {

@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3137a8bf-c695-47fc-a0cb-ee5faf00756a" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Dashboard/Groups/Groups.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dashboard/Groups/Groups.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -44,12 +43,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="js" value="3103" />
+          <entry key="js" value="3174" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JavaScript" value="3103" />
+          <entry key="JavaScript" value="3174" />
         </counts>
       </usages-collector>
     </session>
@@ -59,8 +58,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/Dashboard/Groups/Groups.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="295">
-              <caret line="73" column="49" lean-forward="true" selection-start-line="73" selection-start-column="49" selection-end-line="73" selection-end-column="49" />
+            <state relative-caret-position="352">
+              <caret line="122" column="29" lean-forward="true" selection-start-line="122" selection-start-column="29" selection-end-line="122" selection-end-column="29" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -231,13 +230,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="28296000" />
+    <option name="totallyTimeSpent" value="28669000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="31" y="23" width="1524" height="978" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19494344" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19494344" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -250,7 +249,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="8" visible="true" weight="0.14108352" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.14108352" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -404,8 +403,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Dashboard/Groups/Groups.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="295">
-          <caret line="73" column="49" lean-forward="true" selection-start-line="73" selection-start-column="49" selection-end-line="73" selection-end-column="49" />
+        <state relative-caret-position="352">
+          <caret line="122" column="29" lean-forward="true" selection-start-line="122" selection-start-column="29" selection-end-line="122" selection-end-column="29" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>
