@@ -53,6 +53,11 @@ class Groups extends Component {
         .post("/groups/joinGroup", request)
         .then(response => {
             const { data } = response;
+            data.members = data.members.length;
+            data.startDate = `${new Date(data.startDate).getFullYear()}-${new Date(
+                data.startDate
+            ).getMonth()}-${new Date(data.startDate).getDate()}`;
+            data.key = data.firebaseId;
             this.setState({ groups: [data] });
             if(response){
                 this.setState({ showGroupJoinModal: false })
@@ -68,6 +73,11 @@ class Groups extends Component {
           .post("groups/leaveGroup", request)
           .then(response => {
               const { data } = response;
+              data.members = data.members.length;
+              data.startDate = `${new Date(data.startDate).getFullYear()}-${new Date(
+                  data.startDate
+              ).getMonth()}-${new Date(data.startDate).getDate()}`;
+              data.key = data.firebaseId;
               this.setState({ groups: [data] });
               if(response){
                   this.setState({ showDeleteGroupModal: false })
@@ -83,10 +93,12 @@ class Groups extends Component {
           .post("groups/fetchAndUpdate", request)
           .then(response => {
               const { data } = response;
-              this.setState({ groups: [data] });
-              if(response){
-                  this.setState({ showEditGroupModal: false })
-              }
+              data.members = data.members.length;
+              data.startDate = `${new Date(data.startDate).getFullYear()}-${new Date(
+                  data.startDate
+              ).getMonth()}-${new Date(data.startDate).getDate()}`;
+              data.key = data.firebaseId;
+              this.setState({ groups: [data], showEditGroupModal: false });
           })
           .catch(error => { console.log(error) })
   };
