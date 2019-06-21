@@ -52,14 +52,25 @@ class Groups extends Component {
       axios
         .post("/groups/joinGroup", request)
         .then(response => {
-            const { data } = response;
-            data.members = data.members.length;
-            data.startDate = `${new Date(data.startDate).getFullYear()}-${new Date(
-                data.startDate
-            ).getMonth()}-${new Date(data.startDate).getDate()}`;
-            data.key = data.firebaseId;
-            this.setState({ groups: [data] });
             if(response){
+                axios
+                    .get(`/groups/${this.props.userId}`)
+                    .then(response => {
+                        const groups = response.data.map(group => {
+                            return {
+                                ...group,
+                                members: group.members.length,
+                                startDate: `${new Date(group.startDate).getFullYear()}-${new Date(
+                                    group.startDate
+                                ).getMonth()}-${new Date(group.startDate).getDate()}`,
+                                key: group.firebaseId
+                            };
+                        });
+                        this.setState({ groups });
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    });
                 this.setState({ showGroupJoinModal: false })
             }
         })
@@ -72,14 +83,25 @@ class Groups extends Component {
       axios
           .post("groups/leaveGroup", request)
           .then(response => {
-              const { data } = response;
-              data.members = data.members.length;
-              data.startDate = `${new Date(data.startDate).getFullYear()}-${new Date(
-                  data.startDate
-              ).getMonth()}-${new Date(data.startDate).getDate()}`;
-              data.key = data.firebaseId;
-              this.setState({ groups: [data] });
               if(response){
+                  axios
+                      .get(`/groups/${this.props.userId}`)
+                      .then(response => {
+                          const groups = response.data.map(group => {
+                              return {
+                                  ...group,
+                                  members: group.members.length,
+                                  startDate: `${new Date(group.startDate).getFullYear()}-${new Date(
+                                      group.startDate
+                                  ).getMonth()}-${new Date(group.startDate).getDate()}`,
+                                  key: group.firebaseId
+                              };
+                          });
+                          this.setState({ groups });
+                      })
+                      .catch(error => {
+                          console.log(error);
+                      });
                   this.setState({ showDeleteGroupModal: false })
               }
           })
@@ -92,13 +114,27 @@ class Groups extends Component {
       axios
           .post("groups/fetchAndUpdate", request)
           .then(response => {
-              const { data } = response;
-              data.members = data.members.length;
-              data.startDate = `${new Date(data.startDate).getFullYear()}-${new Date(
-                  data.startDate
-              ).getMonth()}-${new Date(data.startDate).getDate()}`;
-              data.key = data.firebaseId;
-              this.setState({ groups: [data], showEditGroupModal: false });
+              if(response){
+                  axios
+                      .get(`/groups/${this.props.userId}`)
+                      .then(response => {
+                          const groups = response.data.map(group => {
+                              return {
+                                  ...group,
+                                  members: group.members.length,
+                                  startDate: `${new Date(group.startDate).getFullYear()}-${new Date(
+                                      group.startDate
+                                  ).getMonth()}-${new Date(group.startDate).getDate()}`,
+                                  key: group.firebaseId
+                              };
+                          });
+                          this.setState({ groups });
+                      })
+                      .catch(error => {
+                          console.log(error);
+                      });
+                  this.setState({ showEditGroupModal: false });
+              }
           })
           .catch(error => { console.log(error) })
   };
