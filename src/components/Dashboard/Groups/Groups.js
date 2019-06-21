@@ -178,7 +178,7 @@ class Groups extends Component {
             key: "action",
             render: (text, record) =>
                     <span>
-                        <a href="javascript:;" onClick={this.clickHandleForModal('join', record)}>Join {record.name}</a>
+                        <a href="javascript:;" onClick={this.clickHandleForModal('join', record)}>Join</a>
                         <Divider type="vertical"/>
                         <a href="javascript:;" onClick={this.clickHandleForModal('edit', record)}>Edit</a>
                     <Divider type="vertical"/>
@@ -224,7 +224,7 @@ class Groups extends Component {
               visible={this.state.showDeleteGroupModal}
               handleSubmit={this.deleteGroup}
               handleCancel={() => {this.setState({ showDeleteGroupModal: false })}}
-              children={<p>Are you sure you want to delete this {this.state.selectedRecord.name}?</p>}
+              children={<p>Are you sure you want to leave group {this.state.selectedRecord.name}?</p>}
           />
       </div>
     );
