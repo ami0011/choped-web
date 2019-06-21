@@ -114,6 +114,7 @@ class Groups extends Component {
   };
 
   render() {
+      console.log('groups', this.state.groups)
     const columns = [
       {
         title: "Name",
@@ -139,16 +140,14 @@ class Groups extends Component {
             title: "Action",
             dataIndex: "action",
             key: "action",
-            render: text =>
-                this.state.groups.map(group =>
+            render: (text, record) =>
                     <span>
-                        <a href="javascript:;" onClick={this.clickHandleForModal('join', group)}>Join</a>
+                        <a href="javascript:;" onClick={this.clickHandleForModal('join', record)}>Join {record.name}</a>
                         <Divider type="vertical"/>
-                        <a href="javascript:;" onClick={this.clickHandleForModal('edit', group)}>Edit</a>
+                        <a href="javascript:;" onClick={this.clickHandleForModal('edit', record)}>Edit</a>
                     <Divider type="vertical"/>
-                    <a href="javascript:;" onClick={this.clickHandleForModal('delete', group)}>Leave</a>
-                    </span>
-                )}
+                    <a href="javascript:;" onClick={this.clickHandleForModal('delete', record)}>Leave</a>
+                    </span>}
     ];
 
     return (
