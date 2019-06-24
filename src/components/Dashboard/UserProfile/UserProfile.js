@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import axios from "../../../axiosInstance";
-import Table from "../../UI/Table/Table";
 import { connect } from "react-redux";
 import CustomCard from "../../UI/Card/Card";
 import { Skeleton, Card, Switch, Avatar } from 'antd';
@@ -58,7 +57,6 @@ class UserProfile extends Component {
     };
 
   render() {
-      console.log('state', this.state);
     return (
       <div>
           {this.state.profile.map(profile => (
