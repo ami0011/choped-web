@@ -11,7 +11,9 @@ const { Content, Sider } = Layout;
 const tabs = [
   { key: 1, title: "Profile", icon: "user", component: <UserProfile/> },
   { key: 2, title: "Conversation", icon: "message", component: <Conversations/> },
-  { key: 3, title: "Groups", icon: "team", component: <Groups/> }
+  { key: 3, title: "Groups", icon: "team", component: <Groups/> },
+    { key: 4, title: "Chat", icon: "wechat", component: <Groups/> },
+    { key: 5, title: "Files", icon: "file", component: <Groups/> }
 ];
 
 export class Dashboard extends Component {
