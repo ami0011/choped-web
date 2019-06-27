@@ -161,7 +161,7 @@ class Groups extends Component {
     };
 
     showGroupsModal = () => {
-
+        this.setState({ showGroupJoinModal: true })
     };
 
   render() {
@@ -210,7 +210,7 @@ class Groups extends Component {
       <div>
         <Table columns={columns} dataSource={this.state.groups}/>
           <CustomModal
-              title="Join Group"
+              title="Join Group/s"
               visible={this.state.showGroupJoinModal}
               handleSubmit={this.joinGroup}
               handleCancel={() => {this.setState({ showGroupJoinModal: false })}}
