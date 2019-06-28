@@ -75,7 +75,7 @@ class Groups extends Component {
                     .catch(error => {
                         console.log(error);
                     });
-                this.setState({ showGroupJoinModal: false })
+                this.setState({ showGroupJoinModal: false, selectedRecord: { name: '', description: '' } })
             }
         })
         .catch(error => { console.log(error) })
@@ -144,6 +144,7 @@ class Groups extends Component {
   };
 
   addGroup = () => {
+      this.setState({ showAddGroupModal: false });
   };
 
   onTextChange = event => {
@@ -216,12 +217,13 @@ class Groups extends Component {
               title="Join Group/s"
               visible={this.state.showGroupJoinModal}
               handleSubmit={this.joinGroup}
-              handleCancel={() => {this.setState({ showGroupJoinModal: false })}}
+              okButtonProps={{ disabled: !this.state.checked }}
+              handleCancel={() => {this.setState({ showGroupJoinModal: false, selectedRecord: { name: '', description: '' } })}}
               children={this.state.groups.map((group, index) => (
                   <Checkbox
                       key={index}
                       value={group}
-                      checked={this.state.selectedRecord.name === group.name}
+                      checked={this.state.selectedRecord.name === group.name && this.state.checked}
                       onChange={this.onCheck}>{group.name}</Checkbox>
               ))}
           />
@@ -253,6 +255,7 @@ class Groups extends Component {
               visible={this.state.showAddGroupModal}
               handleSubmit={this.addGroup}
               handleCancel={() => {this.setState({ showAddGroupModal: false })}}
+              okButtonProps={{ disabled: !this.state.selectedRecord.name }}
               children={
                   <span>
                       <p>Name</p>
@@ -283,7 +286,9 @@ class Groups extends Component {
               <Button
                   type={'primary'}
                   shape={'round'}
-                  style={{ float: 'right', marginTop: '30px'}}>Add Group
+                  style={{ float: 'right', marginTop: '30px'}}
+                  onClick={() => {this.setState({ showAddGroupModal: true })}}
+              >Add Group
               </Button>
           )}
           {this.state.showJoin && (
