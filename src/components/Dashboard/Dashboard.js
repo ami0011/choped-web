@@ -5,6 +5,7 @@ import SideTab from "../SideTab/SideTab";
 import UserProfile from "./UserProfile/UserProfile";
 import Conversations from "./Conversations/Conversations";
 import Groups from "./Groups/Groups";
+import Files from "./Files/Files";
 
 const { Content, Sider } = Layout;
 
@@ -13,7 +14,7 @@ const tabs = [
   { key: 2, title: "Conversation", icon: "message", component: <Conversations/> },
   { key: 3, title: "Groups", icon: "team", component: <Groups/> },
     { key: 4, title: "Chat", icon: "wechat", component: <Groups/> },
-    { key: 5, title: "Files", icon: "file", component: <Groups/> }
+    { key: 5, title: "Files", icon: "file", component: <Files/> }
 ];
 
 export class Dashboard extends Component {

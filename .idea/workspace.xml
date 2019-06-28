@@ -2,9 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3137a8bf-c695-47fc-a0cb-ee5faf00756a" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/Dashboard/Files/Files.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/Dashboard/Files/Files.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/Dashboard/Groups/Groups.js" afterPath="$PROJECT_DIR$/src/components/Dashboard/Groups/Groups.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/UI/Modal/Modal.js" afterPath="$PROJECT_DIR$/src/components/UI/Modal/Modal.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/Dashboard/Conversations/Conversations.js" afterPath="$PROJECT_DIR$/src/components/Dashboard/Conversations/Conversations.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/Dashboard/Dashboard.js" afterPath="$PROJECT_DIR$/src/components/Dashboard/Dashboard.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -58,11 +60,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Groups.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Groups.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/Dashboard/Groups/Groups.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="174">
-              <caret line="219" column="42" lean-forward="false" selection-start-line="219" selection-start-column="42" selection-end-line="219" selection-end-column="42" />
+            <state relative-caret-position="2794">
+              <caret line="224" column="25" lean-forward="false" selection-start-line="224" selection-start-column="25" selection-end-line="224" selection-end-column="25" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -70,12 +72,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Modal.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/UI/Modal/Modal.js">
+      <file leaf-file-name="Conversations.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/Dashboard/Conversations/Conversations.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="5" column="79" lean-forward="false" selection-start-line="5" selection-start-column="66" selection-end-line="5" selection-end-column="79" />
-              <folding />
+            <state relative-caret-position="240">
+              <caret line="16" column="16" lean-forward="true" selection-start-line="16" selection-start-column="16" selection-end-line="16" selection-end-column="16" />
+              <folding>
+                <element signature="e#0#41#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -83,8 +87,8 @@
       <file leaf-file-name="Dashboard.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/Dashboard/Dashboard.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="570">
-              <caret line="38" column="52" lean-forward="false" selection-start-line="38" selection-start-column="52" selection-end-line="38" selection-end-column="52" />
+            <state relative-caret-position="313">
+              <caret line="23" column="4" lean-forward="true" selection-start-line="23" selection-start-column="4" selection-end-line="23" selection-end-column="4" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -92,14 +96,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserProfile.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/Dashboard/UserProfile/UserProfile.js">
+      <file leaf-file-name="Files.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/components/Dashboard/Files/Files.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="213">
-              <caret line="58" column="12" lean-forward="false" selection-start-line="58" selection-start-column="12" selection-end-line="58" selection-end-column="12" />
+            <state relative-caret-position="315">
+              <caret line="21" column="10" lean-forward="true" selection-start-line="21" selection-start-column="10" selection-end-line="21" selection-end-column="10" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Files.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/Dashboard/Files/Files.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -144,13 +158,15 @@
         <option value="$PROJECT_DIR$/src/components/UI/Card/Card.css" />
         <option value="$PROJECT_DIR$/src/components/UI/Card/Card.js" />
         <option value="$PROJECT_DIR$/src/index.js" />
-        <option value="$PROJECT_DIR$/src/components/Dashboard/Conversations/Conversations.js" />
         <option value="$PROJECT_DIR$/src/components/UI/Toolbar/Toolbar.css" />
         <option value="$PROJECT_DIR$/src/axiosInstance.js" />
-        <option value="$PROJECT_DIR$/src/components/Dashboard/Dashboard.js" />
         <option value="$PROJECT_DIR$/src/components/Dashboard/UserProfile/UserProfile.js" />
         <option value="$PROJECT_DIR$/src/components/UI/Modal/Modal.js" />
         <option value="$PROJECT_DIR$/src/components/Dashboard/Groups/Groups.js" />
+        <option value="$PROJECT_DIR$/src/components/Dashboard/Files/Files.css" />
+        <option value="$PROJECT_DIR$/src/components/Dashboard/Conversations/Conversations.js" />
+        <option value="$PROJECT_DIR$/src/components/Dashboard/Dashboard.js" />
+        <option value="$PROJECT_DIR$/src/components/Dashboard/Files/Files.js" />
       </list>
     </option>
   </component>
@@ -223,7 +239,23 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
               <item name="Dashboard" type="462c0819:PsiDirectoryNode" />
-              <item name="UserProfile" type="462c0819:PsiDirectoryNode" />
+              <item name="Conversations" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="choped-web" type="b2602c69:ProjectViewProjectNode" />
+              <item name="choped-web" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="Dashboard" type="462c0819:PsiDirectoryNode" />
+              <item name="Files" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="choped-web" type="b2602c69:ProjectViewProjectNode" />
+              <item name="choped-web" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="Dashboard" type="462c0819:PsiDirectoryNode" />
+              <item name="Groups" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -275,18 +307,18 @@
       <workItem from="1560824741702" duration="7075000" />
       <workItem from="1560942272994" duration="6873000" />
       <workItem from="1561635619182" duration="8998000" />
-      <workItem from="1561699815716" duration="5656000" />
+      <workItem from="1561699815716" duration="6081000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="37816000" />
+    <option name="totallyTimeSpent" value="38241000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1420" height="783" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12437455" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20014296" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -469,14 +501,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Dashboard/Conversations/Conversations.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="31" column="3" lean-forward="true" selection-start-line="31" selection-start-column="3" selection-end-line="31" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Dashboard/Dashboard.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -498,13 +522,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Dashboard/Dashboard.js">
+    <entry file="file://$PROJECT_DIR$/src/components/UI/Modal/Modal.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="38" column="52" lean-forward="false" selection-start-line="38" selection-start-column="52" selection-end-line="38" selection-end-column="52" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="315">
+          <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -518,18 +540,48 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/UI/Modal/Modal.js">
+    <entry file="file://$PROJECT_DIR$/src/components/Dashboard/Groups/Groups.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="5" column="79" lean-forward="false" selection-start-line="5" selection-start-column="66" selection-end-line="5" selection-end-column="79" />
+        <state relative-caret-position="2794">
+          <caret line="224" column="25" lean-forward="false" selection-start-line="224" selection-start-column="25" selection-end-line="224" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Dashboard/Dashboard.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="313">
+          <caret line="23" column="4" lean-forward="true" selection-start-line="23" selection-start-column="4" selection-end-line="23" selection-end-column="4" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Dashboard/Files/Files.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Dashboard/Groups/Groups.js">
+    <entry file="file://$PROJECT_DIR$/src/components/Dashboard/Conversations/Conversations.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="174">
-          <caret line="219" column="42" lean-forward="false" selection-start-line="219" selection-start-column="42" selection-end-line="219" selection-end-column="42" />
+        <state relative-caret-position="240">
+          <caret line="16" column="16" lean-forward="true" selection-start-line="16" selection-start-column="16" selection-end-line="16" selection-end-column="16" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Dashboard/Files/Files.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="10" lean-forward="true" selection-start-line="21" selection-start-column="10" selection-end-line="21" selection-end-column="10" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>

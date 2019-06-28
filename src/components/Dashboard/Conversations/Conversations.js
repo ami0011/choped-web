@@ -2,9 +2,6 @@ import React, { Component } from "react";
 import axios from "../../../axiosInstance";
 import Table from "../../UI/Table/Table";
 import { connect } from "react-redux";
-import { Divider } from 'antd';
-import CustomModal from "../../UI/Modal/Modal";
-import { Input } from 'antd';
 
 class Conversations extends Component {
   state = {
