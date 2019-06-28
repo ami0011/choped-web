@@ -57,7 +57,6 @@ class UserProfile extends Component {
     };
 
   render() {
-      console.log('profile', this.state.profile);
     return (
       <div>
           {this.state.profile.map(profile => (

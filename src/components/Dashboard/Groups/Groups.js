@@ -3,7 +3,7 @@ import axios from "../../../axiosInstance";
 import Table from "../../UI/Table/Table";
 import { connect } from "react-redux";
 import CustomModal from "../../UI/Modal/Modal";
-import {Divider, Input, Button} from 'antd';
+import {Divider, Input, Button, Checkbox} from 'antd';
 
 
 class Groups extends Component {
@@ -143,7 +143,6 @@ class Groups extends Component {
   };
 
   addGroup = () => {
-
   };
 
   onTextChange = event => {
@@ -164,8 +163,12 @@ class Groups extends Component {
         this.setState({ showGroupJoinModal: true })
     };
 
+    onCheck = event => {
+      this.setState({ selectedRecord: event.target.value })
+    };
+
   render() {
-      console.log('groups', this.state.groups);
+      console.log('selectedREcord', this.state.selectedRecord);
     const columns = [
       {
         title: "Name",
@@ -214,7 +217,9 @@ class Groups extends Component {
               visible={this.state.showGroupJoinModal}
               handleSubmit={this.joinGroup}
               handleCancel={() => {this.setState({ showGroupJoinModal: false })}}
-              children={<p>Do you want to join group {this.state.selectedRecord.name}?</p>}
+              children={this.state.groups.map((group, index) => (
+                  <Checkbox key={index} value={group} onChange={this.onCheck}>{group.name}</Checkbox>
+              ))}
           />
           <CustomModal
               title="Edit Group"
