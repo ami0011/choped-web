@@ -15,7 +15,8 @@ class Groups extends Component {
       showAddGroupModal: false,
       selectedRecord: { name: '', description: '' },
       showAdd: false,
-      showJoin: false
+      showJoin: false,
+      checked: false
   };
 
   componentWillMount() {
@@ -164,11 +165,10 @@ class Groups extends Component {
     };
 
     onCheck = event => {
-      this.setState({ selectedRecord: event.target.value })
+      this.setState({ selectedRecord: event.target.value, checked: event.target.checked })
     };
 
   render() {
-      console.log('selectedREcord', this.state.selectedRecord);
     const columns = [
       {
         title: "Name",
@@ -218,7 +218,11 @@ class Groups extends Component {
               handleSubmit={this.joinGroup}
               handleCancel={() => {this.setState({ showGroupJoinModal: false })}}
               children={this.state.groups.map((group, index) => (
-                  <Checkbox key={index} value={group} onChange={this.onCheck}>{group.name}</Checkbox>
+                  <Checkbox
+                      key={index}
+                      value={group}
+                      checked={this.state.selectedRecord.name === group.name}
+                      onChange={this.onCheck}>{group.name}</Checkbox>
               ))}
           />
           <CustomModal
