@@ -3,10 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "antd": "^3.19.0",
-    "axios": "^0.18.0",
+    "antd": "^3.20.0",
+    "axios": "^0.18.1",
     "formik": "^1.5.7",
-    "query-string": "^6.5.0",
+    "query-string": "^6.8.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-infinite-scroller": "^1.2.4",
@@ -20,7 +20,7 @@
     "yup": "^0.27.0"
   },
   "devDependencies": {
-    "babel-plugin-import": "^1.11.2",
+    "babel-plugin-import": "^1.12.0",
     "prettier": "^1.18.2"
   },
   "scripts": {

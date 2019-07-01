@@ -9,6 +9,7 @@ import {Divider, Input, Button, Checkbox} from 'antd';
 class Groups extends Component {
   state = {
     groups: [],
+      lists: [],
       showGroupJoinModal: false,
       showDeleteGroupModal: false,
       showEditGroupModal: false,
@@ -39,6 +40,27 @@ class Groups extends Component {
         console.log(error);
       });
   }
+
+  onJoinGroups = () => {
+      axios
+          .get(`/groups/list/${this.props.userId}`)
+          .then(response => {
+              const lists = response.data.map(list => {
+                  return {
+                      ...list,
+                      members: list.members.length,
+                      startDate: `${new Date(list.startDate).getFullYear()}-${new Date(
+                          list.startDate
+                      ).getMonth()}-${new Date(list.startDate).getDate()}`,
+                      key: list.firebaseId
+                  };
+              });
+              this.setState({ lists,  });
+          })
+          .catch(error => {
+              console.log(error);
+          });
+  };
 
   clickHandleForModal = (type, group) => () => {
       if(type === 'join'){
@@ -162,6 +184,7 @@ class Groups extends Component {
     };
 
     showGroupsModal = () => {
+        this.onJoinGroups();
         this.setState({ showGroupJoinModal: true })
     };
 
@@ -219,7 +242,7 @@ class Groups extends Component {
               handleSubmit={this.joinGroup}
               okButtonProps={{ disabled: !this.state.checked }}
               handleCancel={() => {this.setState({ showGroupJoinModal: false, selectedRecord: { name: '', description: '' } })}}
-              children={this.state.groups.map((group, index) => (
+              children={this.state.lists.map((group, index) => (
                   <Checkbox
                       key={index}
                       value={group}
