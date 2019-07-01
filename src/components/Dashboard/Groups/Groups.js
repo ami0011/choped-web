@@ -3,7 +3,7 @@ import axios from "../../../axiosInstance";
 import Table from "../../UI/Table/Table";
 import { connect } from "react-redux";
 import CustomModal from "../../UI/Modal/Modal";
-import {Divider, Input} from 'antd';
+import {Divider, Input, Button, Checkbox} from 'antd';
 
 
 class Groups extends Component {
@@ -12,7 +12,11 @@ class Groups extends Component {
       showGroupJoinModal: false,
       showDeleteGroupModal: false,
       showEditGroupModal: false,
-      selectedRecord: { name: '', description: '' }
+      showAddGroupModal: false,
+      selectedRecord: { name: '', description: '' },
+      showAdd: false,
+      showJoin: false,
+      checked: false
   };
 
   componentWillMount() {
@@ -71,7 +75,7 @@ class Groups extends Component {
                     .catch(error => {
                         console.log(error);
                     });
-                this.setState({ showGroupJoinModal: false })
+                this.setState({ showGroupJoinModal: false, selectedRecord: { name: '', description: '' } })
             }
         })
         .catch(error => { console.log(error) })
@@ -139,6 +143,10 @@ class Groups extends Component {
           .catch(error => { console.log(error) })
   };
 
+  addGroup = () => {
+      this.setState({ showAddGroupModal: false });
+  };
+
   onTextChange = event => {
       const { value, id } = event.target;
 
@@ -149,8 +157,19 @@ class Groups extends Component {
       }
   };
 
+    renderPlusClick = () => {
+        this.setState({ showAdd: !this.state.showAdd, showJoin: !this.state.showJoin })
+    };
+
+    showGroupsModal = () => {
+        this.setState({ showGroupJoinModal: true })
+    };
+
+    onCheck = event => {
+      this.setState({ selectedRecord: event.target.value, checked: event.target.checked })
+    };
+
   render() {
-      console.log('groups', this.state.groups)
     const columns = [
       {
         title: "Name",
@@ -173,16 +192,21 @@ class Groups extends Component {
         key: "members"
       },
         {
+            title: "Public/Private",
+            dataIndex: "",
+            key: ""
+        },
+        {
             title: "Action",
             dataIndex: "action",
             key: "action",
             render: (text, record) =>
                     <span>
-                        <a href="javascript:;" onClick={this.clickHandleForModal('join', record)}>Join</a>
-                        <Divider type="vertical"/>
+                        {/*<a href="javascript:;" onClick={this.clickHandleForModal('join', record)}>Join</a>*/}
+                        {/*<Divider type="vertical"/>*/}
                         <a href="javascript:;" onClick={this.clickHandleForModal('edit', record)}>Edit</a>
-                    <Divider type="vertical"/>
-                    <a href="javascript:;" onClick={this.clickHandleForModal('delete', record)}>Leave</a>
+                        <Divider type="vertical"/>
+                        <a href="javascript:;" onClick={this.clickHandleForModal('delete', record)}>Leave</a>
                     </span>}
     ];
 
@@ -190,11 +214,18 @@ class Groups extends Component {
       <div>
         <Table columns={columns} dataSource={this.state.groups}/>
           <CustomModal
-              title="Join Group"
+              title="Join Group/s"
               visible={this.state.showGroupJoinModal}
               handleSubmit={this.joinGroup}
-              handleCancel={() => {this.setState({ showGroupJoinModal: false })}}
-              children={<p>Do you want to join group {this.state.selectedRecord.name}?</p>}
+              okButtonProps={{ disabled: !this.state.checked }}
+              handleCancel={() => {this.setState({ showGroupJoinModal: false, selectedRecord: { name: '', description: '' } })}}
+              children={this.state.groups.map((group, index) => (
+                  <Checkbox
+                      key={index}
+                      value={group}
+                      checked={this.state.selectedRecord.name === group.name && this.state.checked}
+                      onChange={this.onCheck}>{group.name}</Checkbox>
+              ))}
           />
           <CustomModal
               title="Edit Group"
@@ -220,12 +251,56 @@ class Groups extends Component {
                   </span>}
           />
           <CustomModal
+              title="Add Group"
+              visible={this.state.showAddGroupModal}
+              handleSubmit={this.addGroup}
+              handleCancel={() => {this.setState({ showAddGroupModal: false })}}
+              okButtonProps={{ disabled: !this.state.selectedRecord.name }}
+              children={
+                  <span>
+                      <p>Name</p>
+                      <Input placeholder="Group Name"
+                             id="name"
+                             allowClear
+                             onChange={this.onTextChange}
+                             value={this.state.selectedRecord.name}
+                      />
+                  <p style={{ marginTop: '10px' }}>Description</p>
+                  <Input placeholder="Group Description"
+                         id="description"
+                         allowClear
+                         onChange={this.onTextChange}
+                         value={this.state.selectedRecord.description}
+                  />
+                  </span>}
+          />
+          <CustomModal
               title="Delete Group"
               visible={this.state.showDeleteGroupModal}
               handleSubmit={this.deleteGroup}
               handleCancel={() => {this.setState({ showDeleteGroupModal: false })}}
               children={<p>Are you sure you want to leave group {this.state.selectedRecord.name}?</p>}
           />
+          <Button type={'primary'} shape={'circle'} icon={'plus'} style={this.state.showAdd ? { float: 'right', margin: '30px', transform: 'rotate(45deg)'} : { float: 'right', margin: '30px'}} onClick={this.renderPlusClick}/>
+          {this.state.showAdd && (
+              <Button
+                  type={'primary'}
+                  shape={'round'}
+                  style={{ float: 'right', marginTop: '30px'}}
+                  onClick={() => {this.setState({ showAddGroupModal: true })}}
+              >Add Group
+              </Button>
+          )}
+          {this.state.showJoin && (
+              <Button
+                  type={'primary'}
+                  shape={'round'}
+                  style={{ float: 'right', marginTop: '30px', marginRight: '10px'}}
+                  onClick={this.showGroupsModal}
+              >
+                  Join Group
+              </Button>
+          )}
       </div>
     );
   }

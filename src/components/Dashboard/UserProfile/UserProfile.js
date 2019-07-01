@@ -51,6 +51,10 @@ class UserProfile extends Component {
               <p>Address: <text>{address}</text></p>
               <p>Country: <text>{country}</text></p>
               <p>Post Code: <text>{postCode}</text></p>
+                  <p>User Type: </p>
+                  <p>Gender: </p>
+                  <p>Mobile No.: </p>
+                  <p>Account: </p>
               </Skeleton>
           </div>
       )
