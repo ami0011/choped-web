@@ -166,7 +166,35 @@ class Groups extends Component {
   };
 
   addGroup = () => {
-      this.setState({ showAddGroupModal: false });
+      const { firebaseId, name, description } = this.state.selectedRecord;
+      const request = {body: { name: name, description: description, id: firebaseId }};
+      axios
+          .post("groups/fetchAndUpdate", request)
+          .then(response => {
+              if(response){
+                  axios
+                      .get(`/groups/${this.props.userId}`)
+                      .then(response => {
+                          const groups = response.data.map(group => {
+                              return {
+                                  ...group,
+                                  members: group.members.length,
+                                  startDate: `${new Date(group.startDate).getFullYear()}-${new Date(
+                                      group.startDate
+                                  ).getMonth()}-${new Date(group.startDate).getDate()}`,
+                                  key: group.firebaseId
+                              };
+                          });
+                          this.setState({ groups });
+                      })
+                      .catch(error => {
+                          console.log(error);
+                      });
+                  this.setState({ showAddGroupModal: false });
+              }
+          })
+          .catch(error => { console.log(error) })
+
   };
 
   onTextChange = event => {
