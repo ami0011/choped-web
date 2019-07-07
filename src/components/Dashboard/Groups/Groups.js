@@ -167,7 +167,7 @@ class Groups extends Component {
 
   addGroup = () => {
       const { name, description } = this.state.selectedRecord;
-      const request = {body: { name: name, description: description, type: 'Private' }};
+      const request = { name: name, description: description, type: 'Private', members: []};
       axios
           .post("groups/addgroup", request)
           .then(response => {
@@ -261,6 +261,7 @@ class Groups extends Component {
                     </span>}
     ];
 
+    console.log(this.props);
     return (
       <div>
         <Table columns={columns} dataSource={this.state.groups}/>
