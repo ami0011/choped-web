@@ -166,10 +166,10 @@ class Groups extends Component {
   };
 
   addGroup = () => {
-      const { firebaseId, name, description } = this.state.selectedRecord;
-      const request = {body: { name: name, description: description, id: firebaseId }};
+      const { name, description } = this.state.selectedRecord;
+      const request = {body: { name: name, description: description, type: 'Private' }};
       axios
-          .post("groups/fetchAndUpdate", request)
+          .post("groups/addgroup", request)
           .then(response => {
               if(response){
                   axios
