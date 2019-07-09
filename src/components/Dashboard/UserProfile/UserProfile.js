@@ -35,7 +35,7 @@ class UserProfile extends Component {
 
     renderCard = profile => {
         const { loading } = this.state;
-      const { firstName, lastName, accountName, email, dateOfBirth, address, country, postCode} = profile;
+      const { firstName, lastName, accountName, email, dateOfBirth, address, country, postCode, type, socialMedia, icon} = profile;
       return(
           <div style={{ textAlign: 'left' }}>
               <Skeleton loading={loading} avatar active>
@@ -51,10 +51,13 @@ class UserProfile extends Component {
               <p>Address: <text>{address}</text></p>
               <p>Country: <text>{country}</text></p>
               <p>Post Code: <text>{postCode}</text></p>
-                  <p>User Type: </p>
+                  <p>User Type: <text>{type}</text></p>
                   <p>Gender: </p>
                   <p>Mobile No.: </p>
                   <p>Account: </p>
+                  <div>Social Media Links:</div>
+                  <icon>{icon.map(icon => icon.icon)}</icon>
+                  <span>{socialMedia.map(media => media.socialMedia)}</span>
               </Skeleton>
           </div>
       )
