@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="3137a8bf-c695-47fc-a0cb-ee5faf00756a" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/UI/Card/Card.js" afterPath="$PROJECT_DIR$/src/components/UI/Card/Card.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/UI/Layout/Layout.css" afterPath="$PROJECT_DIR$/src/components/UI/Layout/Layout.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/UI/Toolbar/Toolbar.css" afterPath="$PROJECT_DIR$/src/components/UI/Toolbar/Toolbar.css" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -182,8 +179,8 @@
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="136" />
-    <option name="y" value="78" />
+    <option name="x" value="78" />
+    <option name="y" value="23" />
     <option name="width" value="1173" />
     <option name="height" value="783" />
   </component>
@@ -329,16 +326,15 @@
       <workItem from="1561635619182" duration="8998000" />
       <workItem from="1561699815716" duration="6492000" />
       <workItem from="1561982426682" duration="3759000" />
-      <workItem from="1562480359196" duration="2285000" />
+      <workItem from="1562480359196" duration="2526000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="44696000" />
+    <option name="totallyTimeSpent" value="44937000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="136" y="78" width="1173" height="783" extended-state="0" />
-    <editor active="true" />
+    <frame x="78" y="23" width="1173" height="783" extended-state="0" />
     <layout>
       <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2204861" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -348,7 +344,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.61954886" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="true" show_stripe_button="true" weight="0.61954886" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
