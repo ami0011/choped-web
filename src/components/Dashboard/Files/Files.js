@@ -34,14 +34,19 @@ class Files extends Component {
                 key: "name"
             },
             {
-                title: "Size",
-                dataIndex: "",
-                key: ""
+                title: "Size in Byte",
+                dataIndex: "size",
+                key: "size"
             },
             {
-                title: "Date",
-                dataIndex: "",
-                key: ""
+                title: "Type",
+                dataIndex: "type",
+                key: "type"
+            },
+            {
+                title: "Description",
+                dataIndex: "description",
+                key: "description"
             },
         ];
         return (

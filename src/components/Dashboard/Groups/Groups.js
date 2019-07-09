@@ -244,8 +244,8 @@ class Groups extends Component {
       },
         {
             title: "Public/Private",
-            dataIndex: "",
-            key: ""
+            dataIndex: "groupType",
+            key: "groupType"
         },
         {
             title: "Action",
