@@ -11,11 +11,11 @@ import Chat from "./Chat/Chat";
 const { Content, Sider } = Layout;
 
 const tabs = [
-  { key: 1, title: "Profile", icon: "user", component: <UserProfile/> },
-  { key: 2, title: "Conversation", icon: "message", component: <Conversations/> },
-  { key: 3, title: "Groups", icon: "team", component: <Groups/> },
-    { key: 4, title: "Chat", icon: "wechat", component: <Chat /> },
-    { key: 5, title: "Files", icon: "file", component: <Files /> }
+  { key: 1, title: "Profile", icon: "user", component: <UserProfile/>, redirectTo: '/user' },
+  { key: 2, title: "Conversation", icon: "message", component: <Conversations/>, redirectTo: '/conversations' },
+  { key: 3, title: "Groups", icon: "team", component: <Groups/>, redirectTo: '/groups' },
+    { key: 4, title: "Chat", icon: "wechat", component: <Chat />, redirectTo: '/chat' },
+    { key: 5, title: "Files", icon: "file", component: <Files />, redirectTo: '/files' }
 ];
 
 export class Dashboard extends Component {
@@ -33,6 +33,7 @@ export class Dashboard extends Component {
   render() {
     const { currentTab } = this.state;
     const tabContent = tabs[currentTab-1].component;
+
       return (
           <Layout style={{ minHeight: '100vh' }}>
             <Sider>

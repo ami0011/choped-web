@@ -11,6 +11,11 @@ import Home from "./components/Home/Home";
 import Dashboard from "./components/Dashboard/Dashboard";
 import Logout  from "./components/Logout/Logout";
 import ResetPassword from "./components/ResetPassword/ResetPassword";
+import UserProfile from "./components/Dashboard/UserProfile/UserProfile";
+import Groups from "./components/Dashboard/Groups/Groups";
+import Conversations from "./components/Dashboard/Conversations/Conversations";
+import Files from "./components/Dashboard/Files/Files";
+import Chat from "./components/Dashboard/Chat/Chat.js";
 
 class App extends Component {
   componentDidMount() {
@@ -32,6 +37,11 @@ class App extends Component {
           <Route path="/dashboard" component={Dashboard} />
           <Route path="/logout" component={Logout} />
           <Route path="/signin" component={Signin} />
+            <Route path="/user" component={UserProfile}/>
+            <Route path="/groups" component={Groups}/>
+            <Route path="/conversations" component={Conversations}/>
+            <Route path="/files" component={Files}/>
+            <Route path="/chat" component={Chat}/>
           <Route path="/" exact component={Home} />
           <Redirect to="/" />
         </Switch>
