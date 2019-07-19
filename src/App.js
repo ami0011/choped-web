@@ -37,11 +37,11 @@ class App extends Component {
           <Route path="/dashboard" component={Dashboard} />
           <Route path="/logout" component={Logout} />
           <Route path="/signin" component={Signin} />
-            <Route path="/user" component={UserProfile}/>
-            <Route path="/groups" component={Groups}/>
-            <Route path="/conversations" component={Conversations}/>
-            <Route path="/files" component={Files}/>
-            <Route path="/chat" component={Chat}/>
+          <Route path="/user" component={UserProfile}/>
+          <Route path="/groups" component={Groups}/>
+          <Route path="/conversations" component={Conversations}/>
+          <Route path="/files" component={Files}/>
+          <Route path="/chat" component={Chat}/>
           <Route path="/" exact component={Home} />
           <Redirect to="/" />
         </Switch>
