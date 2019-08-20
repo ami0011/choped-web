@@ -260,8 +260,6 @@ class Groups extends Component {
                         <a href="javascript:;" onClick={this.clickHandleForModal('delete', record)}>Leave</a>
                     </span>}
     ];
-
-    console.log(this.props);
     return (
       <div>
         <Table columns={columns} dataSource={this.state.groups}/>
