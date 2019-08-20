@@ -11,27 +11,27 @@ import Chat from "./Chat/Chat";
 const { Content, Sider } = Layout;
 
 const tabs = [
-  { key: 1, title: "Profile", icon: "user", component: <UserProfile/>, redirectTo: '/user' },
-  { key: 2, title: "Conversation", icon: "message", component: <Conversations/>, redirectTo: '/conversations' },
-  { key: 3, title: "Groups", icon: "team", component: <Groups/>, redirectTo: '/groups' },
-    { key: 4, title: "Chat", icon: "wechat", component: <Chat />, redirectTo: '/chat' },
-    { key: 5, title: "Files", icon: "file", component: <Files />, redirectTo: '/files' }
+  { key: 1, title: "Profile", icon: "user", component: <UserProfile/>, redirectTo: 'user' },
+  { key: 2, title: "Conversation", icon: "message", component: <Conversations/>, redirectTo: 'conversations' },
+  { key: 3, title: "Groups", icon: "team", component: <Groups/>, redirectTo: 'groups' },
+  { key: 4, title: "Chat", icon: "wechat", component: <Chat />, redirectTo: 'chat' },
+  { key: 5, title: "Files", icon: "file", component: <Files />, redirectTo: 'files' }
 ];
 
 export class Dashboard extends Component {
 
   state = {
-      currentTab: tabs[0].key,
+    currentTab: tabs[0].key,
   };
-  
-  handleClick = index => {
+
+  handleClick = (index) => {
     this.setState({
-      currentTab: index
+      currentTab: index,
     })
   };
 
   render() {
-    const { currentTab } = this.state;
+    const { currentTab,  } = this.state;
     const tabContent = tabs[currentTab-1].component;
 
       return (
