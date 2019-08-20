@@ -132,7 +132,7 @@ class Files extends Component {
                 <Table columns={columns} dataSource={this.state.files}/>
                 <Button type={'primary'} shape={'circle'} icon={'plus'} style={{ float: 'right', margin: '30px'}} onClick={this.renderUploadModal}/>
                 <CustomModal
-                    title="Upload File"
+                    title="Upload File/s"
                     visible={this.state.showUploadModal}
                     handleSubmit={this.submitFileUpload}
                     handleCancel={() => {this.setState({ showUploadModal: false })}}
@@ -143,7 +143,7 @@ class Files extends Component {
                                 <Icon type="inbox" />
                             </p>
                             <p className="ant-upload-text">Click or drag file to this area to upload</p>
-                            <p className="ant-upload-hint">Support for a single upload.</p>
+                            <p className="ant-upload-hint">Support for a single/multiple file upload(s)</p>
                         </Dragger>
                         <div style={{ marginTop: '20px' }}>
                         {tags.map((tag, index) => {
