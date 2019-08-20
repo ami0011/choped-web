@@ -7,6 +7,8 @@ import CustomModal from "../../UI/Modal/Modal";
 
 const { Dragger } = Upload;
 
+const fileRequest = [];
+
 const props = {
     name: 'file',
     multiple: true,
@@ -15,6 +17,18 @@ const props = {
         const { status } = info.file;
         if (status !== 'uploading') {
             console.log(info.file, info.fileList);
+            fileRequest.push({
+                size: info.file.size,
+                fileType: info.file.type,
+                _id: '',
+                name: info.file.name,
+                description: info.file.name,
+                type: info.file.type,
+                owner: '',
+                createdAt: info.file.lastModifiedDate.toISOString(),
+                _v: '',
+                firebaseId: ''
+            });
         }
         if (status === 'done') {
             message.success(`${info.file.name} file uploaded successfully.`);
@@ -29,14 +43,14 @@ class Files extends Component {
         files: [],
         selectedFile: null,
         showUploadModal: false,
-        tags: ['Tag1', 'Tag 2', 'Tag 3'],
+        tags: ['Tag1', 'Example 2', 'Tag 3'],
         inputVisible: false,
         inputValue: '',
     };
 
     componentWillMount() {
         axios
-            .get(`/files/${this.props.userId}`)
+            .get(`/files/user/${this.props.userId}`)
             .then(response => {
                 const files = response.data.map(file => {
                     return {
@@ -50,6 +64,10 @@ class Files extends Component {
                 console.log(error);
             });
     }
+
+    submitFileUpload = () => {
+      console.log('file upload request', fileRequest);
+    };
 
     handleClose = removedTag => {
         const tags = this.state.tags.filter(tag => tag !== removedTag);
@@ -116,6 +134,7 @@ class Files extends Component {
                 <CustomModal
                     title="Upload File"
                     visible={this.state.showUploadModal}
+                    handleSubmit={this.submitFileUpload}
                     handleCancel={() => {this.setState({ showUploadModal: false })}}
                     children={
                         <div>
