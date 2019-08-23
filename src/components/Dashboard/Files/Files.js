@@ -16,18 +16,12 @@ const props = {
     onChange(info) {
         const { status } = info.file;
         if (status !== 'uploading') {
-            console.log(info.file, info.fileList);
             fileRequest.push({
-                size: info.file.size,
-                fileType: info.file.type,
-                _id: '',
                 name: info.file.name,
                 description: info.file.name,
+                size: info.file.size,
                 type: info.file.type,
-                owner: '',
-                createdAt: info.file.lastModifiedDate.toISOString(),
-                _v: '',
-                firebaseId: ''
+                firebaseId: Math.floor(100000 + Math.random() * 900000)
             });
         }
         if (status === 'done') {
@@ -36,6 +30,9 @@ const props = {
             message.error(`${info.file.name} file upload failed.`);
         }
     },
+    onRemove(info) {
+        info.fileList.pop();
+    }
 };
 
 class Files extends Component {
@@ -67,6 +64,11 @@ class Files extends Component {
 
     submitFileUpload = () => {
       console.log('file upload request', fileRequest);
+      const request = {
+          ...fileRequest,
+          owner: this.props.userId
+      };
+      axios.post("/files", request)
     };
 
     handleClose = removedTag => {
