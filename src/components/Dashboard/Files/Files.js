@@ -7,31 +7,29 @@ import CustomModal from "../../UI/Modal/Modal";
 
 const { Dragger } = Upload;
 
-const fileRequest = [];
+const fileRequest = {};
 
 const props = {
     name: 'file',
-    multiple: true,
+    multiple: false,
     action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
     onChange(info) {
         const { status } = info.file;
-        if (status !== 'uploading') {
-            fileRequest.push({
-                name: info.file.name,
-                description: info.file.name,
-                size: info.file.size,
-                type: info.file.type,
-                firebaseId: Math.floor(100000 + Math.random() * 900000)
-            });
+        if (status === 'uploading') {
+            message.success(`${info.file.name} uploading ...`);
         }
         if (status === 'done') {
             message.success(`${info.file.name} file uploaded successfully.`);
+            fileRequest.name = info.file.name;
+            fileRequest.description = info.file.name;
+            fileRequest.size = info.file.size.toString();
+            fileRequest.type = info.file.type;
+            fileRequest.firebaseid = Math.floor(100000 + Math.random() * 900000).toString();
         } else if (status === 'error') {
             message.error(`${info.file.name} file upload failed.`);
         }
     },
     onRemove(info) {
-        info.fileList.pop();
     }
 };
 
@@ -63,12 +61,26 @@ class Files extends Component {
     }
 
     submitFileUpload = () => {
-      console.log('file upload request', fileRequest);
-      const request = {
-          ...fileRequest,
-          owner: this.props.userId
-      };
-      axios.post("/files", request)
+     const request = {
+         ...fileRequest,
+         owner: this.props.userId
+     };
+     axios.post('/files', request);
+     setInterval(
+         axios
+         .get(`/files/user/${this.props.userId}`)
+         .then(response => {
+             const files = response.data.map(file => {
+                 return {
+                     ...file,
+                     key: file.firebaseId
+                 };
+             });
+             this.setState({ files });
+         })
+         .catch(error => {
+             console.log(error);
+         }), 5000)
     };
 
     handleClose = removedTag => {
