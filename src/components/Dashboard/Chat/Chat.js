@@ -10,7 +10,7 @@ class Chat extends Component {
         <div id="frame">
           <div>
             <iframe src="https://tokbox.com/embed/embed/ot-embed.js?embedId=245fdf36-e100-496f-8e9f-4a67b086f2e9&room=DEFAULT_ROOM&iframe=true" width="100%" height="400px" scrolling="auto" allow="microphone; camera" />
-            <iframe src="https://phasic-chatsvr.herokuapp.com" width="100%" height="400px" />
+            <iframe src="https://phasic-chatsvr.herokuapp.com" width="100%" height="100%" />
           </div>
 
         </div>
