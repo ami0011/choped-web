@@ -17,7 +17,8 @@ class Groups extends Component {
       selectedRecord: { name: '', description: '' },
       showAdd: false,
       showJoin: false,
-      checked: false
+      checked: false,
+      isPrivate: false,
   };
 
   componentWillMount() {
@@ -167,7 +168,7 @@ class Groups extends Component {
 
   addGroup = () => {
       const { name, description } = this.state.selectedRecord;
-      const request = { name: name, description: description, type: 'Private', members: []};
+      const request = { name: name, description: description, type: this.state.isPrivate ? 'Private' : 'Public', members: []};
       axios
           .post("groups/addgroup", request)
           .then(response => {
@@ -218,6 +219,10 @@ class Groups extends Component {
 
     onCheck = event => {
       this.setState({ selectedRecord: event.target.value, checked: event.target.checked })
+    };
+
+    onIsPrivateChecked = event => {
+      this.setState({ isPrivate: event.target.checked })
     };
 
   render() {
@@ -322,6 +327,13 @@ class Groups extends Component {
                          onChange={this.onTextChange}
                          value={this.state.selectedRecord.description}
                   />
+                      <Checkbox
+                          key="isPrivateCheck"
+                          value={this.state.isPrivate}
+                          checked={this.state.isPrivate}
+                          onChange={this.onIsPrivateChecked}
+                          style={{ marginTop: '10px' }}
+                      >Public</Checkbox>
                   </span>}
           />
           <CustomModal
