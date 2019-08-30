@@ -47,7 +47,7 @@ class Files extends Component {
                             key: file.firebaseId
                         };
                     });
-                    this.setState({ files });
+                    this.setState({ files, showUploadModal: false });
                 })
                 .catch(error => {
                     console.log(error);
@@ -133,6 +133,7 @@ class Files extends Component {
                 fileRequest.owner = this.props.userId;
                 fileRequest.firebaseid = Math.floor(100000 + Math.random() * 900000).toString();
                 this.setState({ fileRequest });
+                return false;
             },
             files,
         };
