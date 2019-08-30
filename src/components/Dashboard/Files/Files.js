@@ -2,40 +2,15 @@ import React, { Component } from 'react';
 import Table from "../../UI/Table/Table";
 import axios from "../../../axiosInstance";
 import { connect } from "react-redux";
-import { Upload, Button, Icon, message, Tag, Input, Tooltip } from 'antd';
+import { Upload, Button, Icon, Tag, Input, Tooltip } from 'antd';
 import CustomModal from "../../UI/Modal/Modal";
 
-const { Dragger } = Upload;
-
-const fileRequest = {};
-
-const props = {
-    name: 'file',
-    multiple: false,
-    action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
-    onChange(info) {
-        const { status } = info.file;
-        if (status === 'uploading') {
-            message.success(`${info.file.name} uploading ...`);
-        }
-        if (status === 'done') {
-            message.success(`${info.file.name} file uploaded successfully.`);
-            fileRequest.name = info.file.name;
-            fileRequest.description = info.file.name;
-            fileRequest.size = info.file.size.toString();
-            fileRequest.type = info.file.type;
-            fileRequest.firebaseid = Math.floor(100000 + Math.random() * 900000).toString();
-        } else if (status === 'error') {
-            message.error(`${info.file.name} file upload failed.`);
-        }
-    },
-    onRemove(info) {
-    }
-};
 
 class Files extends Component {
-    state={
+    state = {
         files: [],
+        fileRequest: {},
+        uploading: false,
         selectedFile: null,
         showUploadModal: false,
         tags: ['Tag1', 'Example 2', 'Tag 3'],
@@ -60,27 +35,23 @@ class Files extends Component {
             });
     }
 
-    submitFileUpload = () => {
-     const request = {
-         ...fileRequest,
-         owner: this.props.userId
-     };
-     axios.post('/files', request);
-     setInterval(
-         axios
-         .get(`/files/user/${this.props.userId}`)
-         .then(response => {
-             const files = response.data.map(file => {
-                 return {
-                     ...file,
-                     key: file.firebaseId
-                 };
-             });
-             this.setState({ files });
-         })
-         .catch(error => {
-             console.log(error);
-         }), 5000)
+    handleUpload = () => {
+        axios.post('/files', this.state.fileRequest);
+        setInterval(
+            axios
+                .get(`/files/user/${this.props.userId}`)
+                .then(response => {
+                    const files = response.data.map(file => {
+                        return {
+                            ...file,
+                            key: file.firebaseId
+                        };
+                    });
+                    this.setState({ files });
+                })
+                .catch(error => {
+                    console.log(error);
+                }), 5000)
     };
 
     handleClose = removedTag => {
@@ -118,7 +89,7 @@ class Files extends Component {
     };
 
     render(){
-        const { tags, inputVisible, inputValue } = this.state;
+        const { files, uploading, tags, inputVisible, inputValue, fileRequest } = this.state;
         const columns = [
             {
                 title: "File Name",
@@ -141,6 +112,30 @@ class Files extends Component {
                 key: "description"
             },
         ];
+
+        const props = {
+            onRemove: file => {
+                this.setState(state => {
+                    const index = state.files.indexOf(file);
+                    const newFileList = state.files.slice();
+                    newFileList.splice(index, 1);
+                    return {
+                        files: newFileList,
+                    };
+                });
+            },
+            beforeUpload: file => {
+                fileRequest.name = file.name;
+                fileRequest.description = file.name;
+                fileRequest.size = file.size.toString();
+                fileRequest.type = file.type;
+                fileRequest.tags = this.state.tags;
+                fileRequest.owner = this.props.userId;
+                fileRequest.firebaseid = Math.floor(100000 + Math.random() * 900000).toString();
+                this.setState({ fileRequest });
+            },
+            files,
+        };
         return (
             <div>
                 <Table columns={columns} dataSource={this.state.files}/>
@@ -148,17 +143,24 @@ class Files extends Component {
                 <CustomModal
                     title="Upload File/s"
                     visible={this.state.showUploadModal}
-                    handleSubmit={this.submitFileUpload}
+                    handleSubmit={() => {this.setState({ showUploadModal: false })}}
                     handleCancel={() => {this.setState({ showUploadModal: false })}}
                     children={
                         <div>
-                        <Dragger {...props}>
-                            <p className="ant-upload-drag-icon">
-                                <Icon type="inbox" />
-                            </p>
-                            <p className="ant-upload-text">Click or drag file to this area to upload</p>
-                            <p className="ant-upload-hint">Support for a single/multiple file upload(s)</p>
-                        </Dragger>
+                            <Upload {...props}>
+                                <Button>
+                                    <Icon type={"upload"}/> Select File
+                                </Button>
+                            </Upload>
+                            <Button
+                                type="primary"
+                                onClick={this.handleUpload}
+                                disabled={files.length === 0}
+                                loading={uploading}
+                                style={{ marginTop: 16 }}
+                            >
+                                {uploading ? 'Uploading' : 'Start Uploading'}
+                            </Button>
                         <div style={{ marginTop: '20px' }}>
                         {tags.map((tag, index) => {
                             const isLongTag = tag.length > 20;
