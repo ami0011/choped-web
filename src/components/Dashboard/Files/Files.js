@@ -36,22 +36,32 @@ class Files extends Component {
     }
 
     handleUpload = () => {
-        axios.post('/files', this.state.fileRequest);
-        setInterval(
-            axios
-                .get(`/files/user/${this.props.userId}`)
-                .then(response => {
-                    const files = response.data.map(file => {
-                        return {
-                            ...file,
-                            key: file.firebaseId
-                        };
-                    });
-                    this.setState({ files, showUploadModal: false });
-                })
-                .catch(error => {
-                    console.log(error);
-                }), 5000)
+        const { fileRequest } = this.state;
+        axios.post('files/upload', fileRequest)
+            .then(response => {
+                if(response.data.key){
+                    this.state.fileRequest = {
+                        ...this.state.fileRequest,
+                        key: response.data.key
+                    }
+                }
+                axios.post('/files', this.state.fileRequest);
+                setInterval(
+                    axios
+                        .get(`/files/user/${this.props.userId}`)
+                        .then(response => {
+                            const files = response.data.map(file => {
+                                return {
+                                    ...file,
+                                    key: file.firebaseId
+                                };
+                            });
+                            this.setState({ files, showUploadModal: false });
+                        })
+                        .catch(error => {
+                            console.log(error);
+                        }), 5000)
+            })
     };
 
     handleClose = removedTag => {
@@ -131,7 +141,6 @@ class Files extends Component {
                 fileRequest.type = file.type;
                 fileRequest.tags = this.state.tags;
                 fileRequest.owner = this.props.userId;
-                fileRequest.firebaseid = Math.floor(100000 + Math.random() * 900000).toString();
                 this.setState({ fileRequest });
                 return false;
             },
