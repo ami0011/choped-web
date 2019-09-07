@@ -35,7 +35,7 @@ class Files extends Component {
             });
     }
 
-    handleUpload = () => {
+    handleUpload = async () => {
         const { fileRequest } = this.state;
         axios.post('files/upload', fileRequest)
             .then(response => {
@@ -45,24 +45,31 @@ class Files extends Component {
                         key: response.data.key
                     }
                 }
-                axios.post('/files', this.state.fileRequest);
-                setInterval(
-                    axios
-                        .get(`/files/user/${this.props.userId}`)
-                        .then(response => {
-                            const files = response.data.map(file => {
-                                return {
-                                    ...file,
-                                    key: file.firebaseId
-                                };
-                            });
-                            this.setState({ files, showUploadModal: false });
-                        })
-                        .catch(error => {
-                            console.log(error);
-                        }), 5000)
             })
+        .then(response => {
+             axios.post('/files', this.state.fileRequest)
+                 .then(response => {
+                     if(response.status === 200){
+                         axios
+                             .get(`/files/user/${this.props.userId}`)
+                             .then(response => {
+                                 const files = response.data.map(file => {
+                                     return {
+                                         ...file,
+                                         key: file.firebaseId
+                                     };
+                                 });
+                                 this.setState({ files, showUploadModal: false });
+                             })
+                             .catch(error => {
+                                 console.log(error);
+                             })
+                     }
+                 })
+        })
     };
+
+
 
     handleClose = removedTag => {
         const tags = this.state.tags.filter(tag => tag !== removedTag);

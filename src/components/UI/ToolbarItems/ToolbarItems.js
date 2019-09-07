@@ -10,7 +10,7 @@ export class ToolbarItems extends Component {
     return (
       <ul className="NavigationItems">
         <ToolbarItem link="/" exact>
-          Dr Galen’s
+          Dr Galen’s Network
         </ToolbarItem>
         {isAuthenticated ? (
           <ToolbarItem link="/dashboard">Dashboard</ToolbarItem>
